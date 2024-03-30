@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Orders</title>
+</head>
+<body>
+    <h1>Orders</h1>
+    
+    {% if grouped_orders %}
+        {% for table_number, orders in grouped_orders.items %}
+            <h2>Table {{ table_number }}</h2>
+            <ul>
+                {% for order in orders %}
+                    <li>
+                        Order ID: {{ order.id }}<br>
+                        User: {{ order.user.username }}<br>
+                        Price: {{ order.price }}<br>
+                        Order Time: {{ order.order_time }}<br>
+                        Status: {{ order.status }}<br>
+                        <!-- Add other order details as needed -->
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>No orders available.</p>
+    {% endif %}
+</body>
+</html>

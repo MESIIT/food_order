@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Cart</title>
+</head>
+<body>
+    <h1>Cart</h1>
+    <ul>
+        {% for item in cart_items %}
+            <li>{{ item.menu_item.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.menu_item.price }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Total Price: ${{ total_price }}</h2>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- transaction_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Detail</title>
+</head>
+<body>
+    <h1>Transaction Detail</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Ingredient</th>
+                <th>Quantity</th>
+                <th>UOM</th>
+                <th>Transaction Type</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.ingredient.name }}</td>
+                <td>{{ transaction.quantity }}</td>
+                <td>{{ transaction.get_unit_of_measurement_display }}</td>
+                <td>{{ transaction.get_transaction_type_display }}</td>
+                <td>{{ transaction.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

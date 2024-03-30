@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }}</title>
+</head>
+<body>
+    <h1>{{ category.name }}</h1>
+    {% if menu %}
+    <ul>
+        {% for item in menu %}
+            <li>{{ item.name }} - Price: {{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No menu items found for this category.</p>
+    {% endif %}
+</body>
+</html>

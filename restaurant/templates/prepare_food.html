@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepare Food</title>
+</head>
+<body>
+    <h1>Prepare Food - {{ food_item.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for ingredient_quantity in food_item.ingredientquantity_set.all %}
+                <li>{{ ingredient_quantity.ingredient.name }} - Required Quantity: {{ ingredient_quantity.quantity }}</li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Prepare</button>
+    </form>
+</body>
+</html>

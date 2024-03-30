@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Order</title>
+</head>
+<body>
+    <h1>Update Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ order_form.as_p }}
+        {{ formset.management_form }}
+        {% for form in formset %}
+            {{ form.as_p }}
+        {% endfor %}
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

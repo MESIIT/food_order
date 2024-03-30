@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Menu</title>
+</head>
+<body>
+    <h1>Manage Menu</h1>
+    
+    {% if grouped_menu_items %}
+        {% for category, menu_items in grouped_menu_items.items %}
+            <h2>{{ category }}</h2>
+            <ul>
+                {% for menu_item in menu_items %}
+                    <li>
+                        Name: {{ menu_item.name }}<br>
+                        Price: {{ menu_item.price }}<br>
+                        Ingredients: {{ menu_item.ingredient }}<br>
+                        Description: {{ menu_item.description }}<br>
+                        <img src="{{ menu_item.image.url }}" alt="{{ menu_item.name }}">
+                        <!-- Add other menu item details as needed -->
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>No menu items available.</p>
+    {% endif %}
+</body>
+</html>
