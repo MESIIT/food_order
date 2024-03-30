@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Report</title>
+</head>
+<body>
+    <h1>Order Report</h1>
+
+    <label for="table-search">Search by Table:</label>
+    <input type="text" id="table-search" onkeyup="filterTable()" placeholder="Enter table number...">
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Table</th>
+                <th>Waiter</th>
+                <th>Status</th>
+                <th>Total Bill</th>
+            </tr>
+        </thead>
+        <tbody id="order-table-body">
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.table }}</td>
+                <td>{{ order.waiter }}</td>
+                <td>{{ order.status }}</td>
+                <td>${{ order.calculate_bill }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function filterTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("table-search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("order-table-body");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1]; // Index 1 corresponds to the 'Table' column
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

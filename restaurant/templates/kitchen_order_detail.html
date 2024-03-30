@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Order Detail</title>
+</head>
+<body>
+    <h1>Kitchen Order Detail</h1>
+    <p>Order Status: {{ kitchen_order.status }}</p>
+    <h2>Menu Items:</h2>
+    <ul>
+        {% for item in menu_items %}
+            <li>{{ item.menu_item.name }} - Quantity: {{ item.quantity }}</li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Form to change status -->
+    <form method="post" action="">
+        {% csrf_token %}
+        <button type="submit">Prepare Food</button>
+    </form>
+</body>
+</html>

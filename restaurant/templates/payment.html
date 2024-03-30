@@ -1,13 +1,13 @@
-<!-- In payment.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment</title>
+    <title>Make Payment</title>
 </head>
 <body>
-    <h1>Payment for Order {{ order.id }}</h1>
+    <h1>Make Payment</h1>
+    <h2>Total Amount: ${{ total_amount }}</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
